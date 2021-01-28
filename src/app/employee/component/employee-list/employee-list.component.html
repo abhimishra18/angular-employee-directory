@@ -1,0 +1,25 @@
+<div>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employee$ | async">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.department }}</td>
+        <td>
+          <button class="btn btn-primary" style="margin: 5px">Update</button>
+          <button class="btn btn-danger" style="margin: 5px">Delete</button>
+        </td>
+      </tr>
+      <td><button (click)="addNewEmployee()" class="btn btn-primary" style="margin: 5px">Add New Employee</button></td>
+      <tr>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
