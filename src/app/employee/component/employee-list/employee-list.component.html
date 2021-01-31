@@ -4,6 +4,7 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Department</th>
+        <th scope="col">Employee Id</th>
         <th scope="col">Operations</th>
       </tr>
     </thead>
@@ -11,9 +12,11 @@
       <tr *ngFor="let employee of employee$ | async">
         <td>{{ employee.name }}</td>
         <td>{{ employee.department }}</td>
+        <td>{{ employee.employeeId }}</td>
+
         <td>
-          <button class="btn btn-primary" style="margin: 5px">Update</button>
-          <button class="btn btn-danger" style="margin: 5px">Delete</button>
+          <button (click)="updateEmployee(employee.id)" class="btn btn-primary" style="margin: 5px">Update</button>
+          <button (click)="deleteEmployee(employee.id)" class="btn btn-danger" style="margin: 5px">Delete</button>
         </td>
       </tr>
       <td><button (click)="addNewEmployee()" class="btn btn-primary" style="margin: 5px">Add New Employee</button></td>
