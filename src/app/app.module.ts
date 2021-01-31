@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { CreateEmployeeComponent } from './employee/component/create-employee/create-employee.component';
 import { EmployeeListComponent } from './employee/component/employee-list/employee-list.component';
 import { EmployeeModule } from './employee/employee.module';
+import { Mode } from './employee/model/employee.model';
 import { metaReducers, reducers } from './store/reducers';
 
 
 const routes = [
-  {path: 'employees', component: EmployeeListComponent,},
-  {path: 'create-employee', component: CreateEmployeeComponent},
-  {path: '**', redirectTo: 'employees'}
+  { path: 'employees', component: EmployeeListComponent, },
+  { path: 'create-employee', component: CreateEmployeeComponent, data: { type: Mode.Add } },
+  { path: 'update-employee/:userId', component: CreateEmployeeComponent, data: { type: Mode.Edit } },
+  { path: '**', redirectTo: 'employees' }
 ];
 
 @NgModule({
@@ -31,7 +33,7 @@ const routes = [
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
-    StoreDevtoolsModule.instrument({maxAge: 25}),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   bootstrap: [AppComponent]
 })

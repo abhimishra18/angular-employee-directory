@@ -9,3 +9,15 @@ export const getAllEmployees = createSelector(
 );
 
 
+export const getEmployeeById = (id: string) => createSelector(
+  getAllEmployees, (entities) => {
+    if (entities.length) {
+      return entities.find(entity => {
+        return entity.id === id;
+      })
+    }
+    else {
+      return null;
+    }
+  }
+);
